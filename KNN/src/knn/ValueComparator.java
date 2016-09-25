@@ -1,0 +1,28 @@
+package knn;
+
+import java.util.Comparator;
+import java.util.Map;
+/**
+ * 
+ * @author wang
+ * http://blog.csdn.net/u011734144/article/details/52384284
+ * 对TreeMap按照value进行排序
+ */
+public class ValueComparator implements Comparator<String> {
+	Map<String, Integer> base;  
+    //这里需要将要比较的map集合传进来
+    public ValueComparator(Map<String, Integer> base) {  
+        this.base = base;  
+    }  
+  
+    // Note: this comparator imposes orderings that are inconsistent with equals.    
+    //比较的时候，传入的两个参数应该是map的两个key，根据上面传入的要比较的集合base，可以获取到key对应的value，然后按照value进行比较   
+    public int compare(String a, String b) {  
+        if (base.get(a) >= base.get(b)) {  
+            return 1;  
+        } else {  
+            return -1;  
+        } // returning 0 would merge keys  
+    }  
+}
+
